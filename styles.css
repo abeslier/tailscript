@@ -39,6 +39,7 @@ input, button {
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem 0.5rem;
     width: 100%;
+    user-select: none;
 }
 
 input {
@@ -50,4 +51,14 @@ button {
     cursor: pointer;
     color: white;
     background-color: var(--gray7);
+}
+
+.privacy-policy {
+    margin-top: calc(0.65rem*3); 
+    color: var(--gray1);
+    position: absolute;
+    bottom: 0.65rem;
+}
+.privacy-policy:visited {
+    color: var(--gray1);
 }
