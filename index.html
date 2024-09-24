@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="flexboxSelects">
+        <select id="selectOS">
+            <option value="windows" selected>Windows</option>
+            <option value="debian-bookworm">Debian 12 (Bookworm)</option>
+        </select>
+    </div>
     <div class="flexboxInputs">
         <input type="text" id="authkeyInput" placeholder="Auth key" autocomplete="off">
         <input type="text" id="hostnameInput" placeholder="Name" autocomplete="off">
@@ -15,9 +21,9 @@
     </div>
     <div class="flexboxButtons">
         <button type="button" id="copyButton">Copy command</button>
-        <button type="button" id="downloadButton">Download Windows script</button>
+        <button type="button" id="downloadButton">Download script</button>
     </div>
-    <a class="privacy-policy" href="privacy-policy.html">privacy policy</a>
+    <!-- <a class="privacy-policy" href="privacy-policy.html">privacy policy</a> -->
     <script src="script.js"></script>
 </body>
 </html>
