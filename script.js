@@ -18,12 +18,14 @@ const flags = {
 };
 
 
+const selectOS = document.getElementById("selectOS")
 const inputs = {
     authkey: document.getElementById("authkeyInput"),
     hostname: document.getElementById("hostnameInput"),
     subnets: document.getElementById("subnetInput")
 }
-const selectOS = document.getElementById("selectOS")
+const copyButton = document.getElementById("copyButton");
+const downloadButton = document.getElementById("downloadButton");
 
 
 function makeCMD(cmd) {
@@ -48,11 +50,11 @@ function downloadAsFile(content, filename) {
 }
 
 
-document.getElementById("copyButton").onclick = () => {
+copyButton.onclick = () => {
     navigator.clipboard.writeText(makeCMD(command));
 }
 
-document.getElementById("downloadButton").onclick = () => {
+downloadButton.onclick = () => {
     switch (selectOS.value) {
         case "windows":
             downloadAsFile(`${scriptWindows}\n${makeCMD(scriptWindowsCommand)}`, scriptWindowsFilename);
@@ -66,9 +68,9 @@ document.getElementById("downloadButton").onclick = () => {
 /* temporary, until debian script implemented */
 function downloadButtonState() {
     if (selectOS.value === "debian-bookworm") {
-        document.getElementById("downloadButton").setAttribute('disabled', true);
+        downloadButton.setAttribute('disabled', 'true');
     } else {
-        document.getElementById("downloadButton").removeAttribute('disabled');
+        downloadButton.removeAttribute('disabled');
     }
 }
 selectOS.onchange = () => {
