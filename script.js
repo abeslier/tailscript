@@ -6,16 +6,17 @@ if not exist %tailscale% (
     del tailscale-setup.exe
 ) else (
     %tailscale% logout
-)`
-const scriptWindowsCommand = "%tailscale% up"
-const scriptWindowsFilename = "tailscript.cmd"
+)`;
+const scriptWindowsCommand = "%tailscale% up";
+const scriptWindowsFilename = "tailscript.cmd";
 
-const command = "tailscale up"
+const command = "tailscale up";
 const flags = {
     authkey: "--authkey",
     hostname: "--hostname",
     subnets: "--advertise-routes"
-}
+};
+
 
 const inputs = {
     authkey: document.getElementById("authkeyInput"),
@@ -24,14 +25,15 @@ const inputs = {
 }
 const selectOS = document.getElementById("selectOS")
 
+
 function makeCMD(cmd) {
     for (let key in inputs) {
         if (inputs[key].value) {
-            cmd += ` ${flags[key]} ${inputs[key].value.trim()}`
-            //cmd += ` ${flags[key]}=${inputs[key].value.trim()}`
+            cmd += ` ${flags[key]} ${inputs[key].value.trim()}`;
+            //cmd += ` ${flags[key]}=${inputs[key].value.trim()}`;
         }
     }
-    return cmd
+    return cmd;
 }
 
 function downloadAsFile(content, filename) {
@@ -47,7 +49,7 @@ function downloadAsFile(content, filename) {
 
 
 document.getElementById("copyButton").onclick = () => {
-    navigator.clipboard.writeText(makeCMD(command))
+    navigator.clipboard.writeText(makeCMD(command));
 }
 
 document.getElementById("downloadButton").onclick = () => {
@@ -60,12 +62,13 @@ document.getElementById("downloadButton").onclick = () => {
     }
 }
 
+
 /* temporary, until debian script implemented */
 function downloadButtonState() {
     if (selectOS.value === "debian-bookworm") {
-        document.getElementById("downloadButton").setAttribute("disabled", true);
+        document.getElementById("downloadButton").setAttribute('disabled', true);
     } else {
-        document.getElementById("downloadButton").removeAttribute("disabled");
+        document.getElementById("downloadButton").removeAttribute('disabled');
     }
 }
 selectOS.onchange = () => {
