@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+*:disabled {
+    display: none;
+}
+
 :root {
     --gray0: #f6f4f2;
     --gray1: #efecea;
@@ -12,6 +16,19 @@
     --gray9: #242424;
 }
 
+@media (prefers-color-scheme: light) {
+    :root {
+        --lightest-bg-color: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-bg-color: var(--gray9);
+        --lightest-bg-color: var(--gray0);
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -20,9 +37,10 @@ body {
     height: 100vh;
     margin: 0;
     gap: calc(0.65rem*3);
+    background-color: var(--main-bg-color);  /* transparent by default */
 }
 
-.flexboxSelects, .flexboxInputs, .flexboxButtons {
+.flexbox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,10 +48,13 @@ body {
     width: 20rem;
 }
 
-select, input[type="text"], button[type="button"] {
-    /* appearance: none; */
+select,
+input[type="text"],
+button[type="button"] {
+    appearance: none;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+    outline: none;  /* :focus */
     padding: 0.5rem 0.75rem 0.5rem;
     width: 100%;
     user-select: none;
@@ -41,7 +62,7 @@ select, input[type="text"], button[type="button"] {
 
 select {
     cursor: pointer;
-    background-color: white;
+    background-color: var(--lightest-bg-color);
     border-color: var(--gray1);
 }
 
@@ -55,11 +76,8 @@ button[type="button"] {
     color: white;
     background-color: var(--gray7);
 }
-button:disabled {  /* temporary, until debian script implemented */
-    display: none;
-}
 
-.privacy-policy {
+.privacyPolicy {
     position: absolute;
     bottom: 0.65rem;
 }
