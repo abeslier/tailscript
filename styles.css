@@ -115,7 +115,8 @@ button[type="button"] {
 }
 
 .themeButton:not(:hover) {
-    transition-delay: 5s;
+    transition-delay: 1s;
+    transition-duration: 1s;
 }
 
 .privacyPolicy {
