@@ -98,6 +98,7 @@ button[type="button"] {
     border: 1px solid transparent;
     color: var(--inverted-bg-color);
     opacity: 0.1;
+    transition: opacity 0.5s;
 }
 
 .themeButton::before {  /* expanded left-top zone of button */
@@ -111,11 +112,10 @@ button[type="button"] {
 
 .themeButton:hover {
     opacity: 1;
-    transition: opacity 0.5s;
 }
 
-.themeButton:not(hover) {
-    transition: opacity 5s ease-in;
+.themeButton:not(:hover) {
+    transition-delay: 5s;
 }
 
 .privacyPolicy {
