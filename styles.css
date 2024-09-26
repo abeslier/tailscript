@@ -18,6 +18,8 @@
 
 @media (prefers-color-scheme: light) {
     :root {
+        /* body background-color transparent by default */
+        --inverted-bg-color: var(--gray7);
         --lightest-bg-color: white;
     }
 }
@@ -25,6 +27,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --main-bg-color: var(--gray9);
+        --inverted-bg-color: var(--gray0);
         --lightest-bg-color: var(--gray0);
     }
 }
@@ -37,7 +40,7 @@ body {
     height: 100vh;
     margin: 0;
     gap: calc(0.65rem*3);
-    background-color: var(--main-bg-color);  /* transparent by default */
+    background-color: var(--main-bg-color);
 }
 
 .flexbox {
@@ -75,6 +78,20 @@ button[type="button"] {
     cursor: pointer;
     color: white;
     background-color: var(--gray7);
+}
+
+.themeButton {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0.65rem;
+    right: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--inverted-bg-color);
 }
 
 .privacyPolicy {

@@ -66,11 +66,11 @@ downloadButton.onclick = () => {
 
 
 /* temporary, until debian script implemented */
-function downloadButtonState() {
+function downloadButtonState() {  /* strict equality: including type */
     if (selectOS.value === "debian-bookworm") {
-        downloadButton.setAttribute('disabled', 'true');
+        downloadButton.setAttribute("disabled", "");  /* disabled set to true by specifying any value (e.g. empty string) */
     } else {
-        downloadButton.removeAttribute('disabled');
+        downloadButton.removeAttribute("disabled");
     }
 }
 selectOS.onchange = () => {
