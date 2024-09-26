@@ -14,6 +14,9 @@
     --gray7: #474645;
     --gray8: #343433;
     --gray9: #242424;
+    --standard-gap: 0.65rem;
+    --standard-gap-offset: calc(var(--standard-gap)*-1);
+    --large-gap: calc(var(--standard-gap)*3);
 }
 
 @media (prefers-color-scheme: light) {
@@ -39,7 +42,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    gap: calc(0.65rem*3);
+    gap: var(--large-gap);
     background-color: var(--main-bg-color);
 }
 
@@ -47,7 +50,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.65rem;
+    gap: var(--standard-gap);
     width: 20rem;
 }
 
@@ -62,6 +65,8 @@ button[type="button"] {
     width: 100%;
     user-select: none;
 }
+
+/* input::placeholder {} */
 
 select {
     cursor: pointer;
@@ -83,8 +88,8 @@ button[type="button"] {
 .themeButton {
     cursor: pointer;
     position: absolute;
-    bottom: 0.65rem;
-    right: 0.65rem;
+    bottom: var(--standard-gap);
+    right: var(--standard-gap);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,9 +97,28 @@ button[type="button"] {
     background-color: transparent;
     border: 1px solid transparent;
     color: var(--inverted-bg-color);
+    opacity: 0.1;
+}
+
+.themeButton::before {  /* expanded left-top zone of button */
+    content: '';
+    position: absolute;
+    width: 25vw;  /* 25% of viewport sized rectangle */
+    height: 25vh;
+    bottom: var(--standard-gap-offset);  /* bottom-right corner at bottom-right of page */
+    right: var(--standard-gap-offset);
+}
+
+.themeButton:hover {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.themeButton:not(hover) {
+    transition: opacity 5s ease-in;
 }
 
 .privacyPolicy {
     position: absolute;
-    bottom: 0.65rem;
+    bottom: var(--standard-gap);
 }
